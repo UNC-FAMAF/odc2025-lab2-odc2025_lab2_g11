@@ -16,10 +16,10 @@ mov x3, #200                // x
 mov x4, #120                // y
 mov x6, SCREEN_WIDTH        // ancho pantalla = 640
 // elijo x5 como registro base
-mul x5, x6, x4              // y * ancho
-add x5, x5, x3              // x + y*ancho
-lsl x5, x5, #2              // *4 → offset en bytes
-add x5, x20, x5              // framebuffer base + offset
+mul x5, x6, x4              // y * 640
+add x5, x5, x3              // x + y*640
+lsl x5, x5, #2              // 4*(x + (y*640)
+add x5, x20, x5              // base + 4*(x + (y*640))
 
 // Precalcular tamaño fila
 mov x8, #640
