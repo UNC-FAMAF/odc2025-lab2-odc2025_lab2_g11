@@ -1,8 +1,8 @@
 Nombre y apellido 
-Integrante 1: 
-Integrante 2:
-Integrante 3:
-Integrante 4:
+Integrante 1: Nelson Acosta Ibañez
+Integrante 2: Federico Avendaño
+Integrante 3: Bruna Grosso
+Integrante 4: Andrés Martínez Bologna
 
 
 Descripción ejercicio 1: 
