@@ -1,7 +1,7 @@
 	.equ SCREEN_WIDTH, 		640
 	.equ SCREEN_HEIGH, 		480
 	.equ BITS_PER_PIXEL,  		32
-
+        .equ COLOR_WHITE,   	0xFFFFFFFF
 	.include "formasBasicas.s"	
 
 	.globl main
@@ -24,6 +24,34 @@ loopF1:
 	cbnz x1,loopF1      // Si no terminó la fila, salto
 	sub x2,x2,1	    // Decrementar contador Y
 	cbnz x2,loopF2      // Si no es la última fila, salto
+ 
+// --------- OBELISCO
+    //Punta obelisco
+    mov x3, #490       // centro X
+    mov x4, #125       // centro Y
+    mov x15, #30        // ancho base
+    mov x16, #35        //altura
+    mov w11, #COLOR_WHITE
+    bl triangulo
+
+
+    //cuerpo obelisco
+ 	mov x1, 30
+	mov x2, 240
+	mov x3, 475
+	mov x4, 143
+	movz x11, 0xDC, lsl 16
+	movk x11, 0xDCDC, lsl 0
+	bl rectangulo
+
+    //ventana oblisco
+    mov x1, 4
+	mov x2, 8
+	mov x3, 488
+	mov x4, 125
+	movz x11, 0x64, lsl 16
+	movk x11, 0x6464, lsl 0
+	bl rectangulo
 
 //PISO color: 0xAADAD9
 // // P(0,376) 640x103 
@@ -373,6 +401,17 @@ loopC51:
 	movk x11, 0x93BA, lsl 0 // x11-> color
 	
 	bl rectangulo
+ 
+// //----------------------------------Sombra campera
+
+    mov x3, #235       // centro X
+    mov x4, #440       // centro Y
+    mov x15, #10     // ancho base
+    mov x16, #80    //altura
+    movz x11, 0x5530, lsl 16   // Carga R y G
+    movk x11, 0x00, lsl 0       // Azul a 0    
+    bl triangulo
+
 
 // -------- CARA  color 0xFF9C5E	
 // //-----CA0 (296,230) 77x77
@@ -689,302 +728,81 @@ loopMO41:
 	
 
 // ------------- MASCARA CLARA color 0x37495B
-// //--------------------------------------- MC0 (355,328) 18x28
+//-------------- MC0 (355,328) 18x28
 
-
+// MC0 (355,328) 18x28
+	mov x1, 18
+	mov x2, 28
+	mov x3, 355
+	mov x4, 328
 	movz x11, 0x37, lsl 16
 	movk x11, 0x495B, lsl 0
+	bl rectangulo
 
-	mov x2, 28            // contador de filas
-
-//usando la formula direcion=base + 4*(x + (y*640))  
-
-	mov x3, #355                // x
-	mov x4, #328                // y
-	mov x6, SCREEN_WIDTH        // ancho pantalla = 640
-// elijo x5 como registro base
-	mul x5, x6, x4              // y * ancho
-	add x5, x5, x3              // x + y*ancho
-	lsl x5, x5, #2              // *4 → offset en bytes
-	add x5, x20, x5              // framebuffer base + offset
-
-// Precalcular tamaño fila
-	mov x8, #640
-	lsl x8, x8, #2              // x8 = 640 * 4 = 2560
-
-// Dibujo del rectángulo
-loopMC02:                      	// filas
-    	mov x1, 18       	// columnas restantes
-    	mov x7, x5              // puntero a comienzo de fila
-loopMC01:
-    	stur w11, [x7]          // pintar píxel
-	add x7, x7, #4          // avanzar a próximo píxel
-	sub x1, x1, #1
-	cbnz x1, loopMC01          // volver si no terminó la fila
-
-	add x5, x5, x8          // avanzar a próxima fila
-	sub x2, x2, #1
-	cbnz x2, loopMC02
-	
-// //--------------------------------------- MC1 (345,336) 28x20
-
-
+	// MC1 (345,336) 28x20
+	mov x1, 28
+	mov x2, 20
+	mov x3, 345
+	mov x4, 336
 	movz x11, 0x37, lsl 16
 	movk x11, 0x495B, lsl 0
+	bl rectangulo
 
-	mov x2, 20            // contador de filas
-
-//usando la formula direcion=base + 4*(x + (y*640))  
-
-	mov x3, #345                // x
-	mov x4, #336                // y
-	mov x6, SCREEN_WIDTH        // ancho pantalla = 640
-// elijo x5 como registro base
-	mul x5, x6, x4              // y * ancho
-	add x5, x5, x3              // x + y*ancho
-	lsl x5, x5, #2              // *4 → offset en bytes
-	add x5, x20, x5              // framebuffer base + offset
-
-// Precalcular tamaño fila
-	mov x8, #640
-	lsl x8, x8, #2              // x8 = 640 * 4 = 2560
-
-// Dibujo del rectángulo
-loopMC12:                      	// filas
-    	mov x1, 28       	// columnas restantes
-    	mov x7, x5              // puntero a comienzo de fila
-loopMC11:
-    	stur w11, [x7]          // pintar píxel
-	add x7, x7, #4          // avanzar a próximo píxel
-	sub x1, x1, #1
-	cbnz x1, loopMC11          // volver si no terminó la fila
-
-	add x5, x5, x8          // avanzar a próxima fila
-	sub x2, x2, #1
-	cbnz x2, loopMC12
-	
-// //--------------------------------------- MC2 (325,308) 19x9
-
-
+	// MC2 (325,305) 19x9
+	mov x1, 19
+	mov x2, 9
+	mov x3, 325
+	mov x4, 305
 	movz x11, 0x37, lsl 16
 	movk x11, 0x495B, lsl 0
+	bl rectangulo
 
-	mov x2, 9            // contador de filas
-
-//usando la formula direcion=base + 4*(x + (y*640))  
-
-	mov x3, #325                // x
-	mov x4, #305                // y
-	mov x6, SCREEN_WIDTH        // ancho pantalla = 640
-// elijo x5 como registro base
-	mul x5, x6, x4              // y * ancho
-	add x5, x5, x3              // x + y*ancho
-	lsl x5, x5, #2              // *4 → offset en bytes
-	add x5, x20, x5              // framebuffer base + offset
-
-// Precalcular tamaño fila
-	mov x8, #640
-	lsl x8, x8, #2              // x8 = 640 * 4 = 2560
-
-// Dibujo del rectángulo
-loopMC22:                      	// filas
-    	mov x1, 19       	// columnas restantes
-    	mov x7, x5              // puntero a comienzo de fila
-loopMC21:
-    	stur w11, [x7]          // pintar píxel
-	add x7, x7, #4          // avanzar a próximo píxel
-	sub x1, x1, #1
-	cbnz x1, loopMC21          // volver si no terminó la fila
-
-	add x5, x5, x8          // avanzar a próxima fila
-	sub x2, x2, #1
-	cbnz x2, loopMC22
-	
-// //--------------------------------------- MC3 (327,318) 9x9
-
-
+	// MC3 (327,318) 9x9
+	mov x1, 9
+	mov x2, 9
+	mov x3, 326
+	mov x4, 313
 	movz x11, 0x37, lsl 16
 	movk x11, 0x495B, lsl 0
+	bl rectangulo
 
-	mov x2, 9            // contador de filas
-
-//usando la formula direcion=base + 4*(x + (y*640))  
-
-	mov x3, #327                // x
-	mov x4, #312                // y
-	mov x6, SCREEN_WIDTH        // ancho pantalla = 640
-// elijo x5 como registro base
-	mul x5, x6, x4              // y * ancho
-	add x5, x5, x3              // x + y*ancho
-	lsl x5, x5, #2              // *4 → offset en bytes
-	add x5, x20, x5              // framebuffer base + offset
-
-// Precalcular tamaño fila
-	mov x8, #640
-	lsl x8, x8, #2              // x8 = 640 * 4 = 2560
-
-// Dibujo del rectángulo
-loopMC32:                      	// filas
-    	mov x1, 9       	// columnas restantes
-    	mov x7, x5              // puntero a comienzo de fila
-loopMC31:
-    	stur w11, [x7]          // pintar píxel
-	add x7, x7, #4          // avanzar a próximo píxel
-	sub x1, x1, #1
-	cbnz x1, loopMC31          // volver si no terminó la fila
-
-	add x5, x5, x8          // avanzar a próxima fila
-	sub x2, x2, #1
-	cbnz x2, loopMC32
-	
-// //--------------------------------------- MC4 (335,269) 18x38
-
-
+	// MC4 (335,269) 18x38
+	mov x1, 18
+	mov x2, 38
+	mov x3, 335
+	mov x4, 269
 	movz x11, 0x37, lsl 16
 	movk x11, 0x495B, lsl 0
+	bl rectangulo
 
-	mov x2, 38            // contador de filas
-
-//usando la formula direcion=base + 4*(x + (y*640))  
-
-	mov x3, #335                // x
-	mov x4, #269                // y
-	mov x6, SCREEN_WIDTH        // ancho pantalla = 640
-// elijo x5 como registro base
-	mul x5, x6, x4              // y * ancho
-	add x5, x5, x3              // x + y*ancho
-	lsl x5, x5, #2              // *4 → offset en bytes
-	add x5, x20, x5              // framebuffer base + offset
-
-// Precalcular tamaño fila
-	mov x8, #640
-	lsl x8, x8, #2              // x8 = 640 * 4 = 2560
-
-// Dibujo del rectángulo
-loopMC42:                      	// filas
-    	mov x1, 18       	// columnas restantes
-    	mov x7, x5              // puntero a comienzo de fila
-loopMC41:
-    	stur w11, [x7]          // pintar píxel
-	add x7, x7, #4          // avanzar a próximo píxel
-	sub x1, x1, #1
-	cbnz x1, loopMC41          // volver si no terminó la fila
-
-	add x5, x5, x8          // avanzar a próxima fila
-	sub x2, x2, #1
-	cbnz x2, loopMC42
-	
-// //--------------------------------------- MC5 (325,279) 39x28
-
-
+	// MC5 (325,279) 39x28
+	mov x1, 39
+	mov x2, 28
+	mov x3, 325
+	mov x4, 279
 	movz x11, 0x37, lsl 16
 	movk x11, 0x495B, lsl 0
+	bl rectangulo
 
-	mov x2, 28            // contador de filas
-
-//usando la formula direcion=base + 4*(x + (y*640))  
-
-	mov x3, #325                // x
-	mov x4, #279                // y
-	mov x6, SCREEN_WIDTH        // ancho pantalla = 640
-// elijo x5 como registro base
-	mul x5, x6, x4              // y * ancho
-	add x5, x5, x3              // x + y*ancho
-	lsl x5, x5, #2              // *4 → offset en bytes
-	add x5, x20, x5              // framebuffer base + offset
-
-// Precalcular tamaño fila
-	mov x8, #640
-	lsl x8, x8, #2              // x8 = 640 * 4 = 2560
-
-// Dibujo del rectángulo
-loopMC52:                      	// filas
-    	mov x1, 39       	// columnas restantes
-    	mov x7, x5              // puntero a comienzo de fila
-loopMC51:
-    	stur w11, [x7]          // pintar píxel
-	add x7, x7, #4          // avanzar a próximo píxel
-	sub x1, x1, #1
-	cbnz x1, loopMC51          // volver si no terminó la fila
-
-	add x5, x5, x8          // avanzar a próxima fila
-	sub x2, x2, #1
-	cbnz x2, loopMC52
-	
-
-// //--------------------------------------- MC6 (315,289) 58x18
-
-
+	// MC6 (315,289) 58x18
+	mov x1, 58
+	mov x2, 18
+	mov x3, 315
+	mov x4, 289
 	movz x11, 0x37, lsl 16
 	movk x11, 0x495B, lsl 0
+	bl rectangulo
 
-	mov x2, 18            // contador de filas
-
-//usando la formula direcion=base + 4*(x + (y*640))  
-
-	mov x3, #315                // x
-	mov x4, #289                // y
-	mov x6, SCREEN_WIDTH        // ancho pantalla = 640
-// elijo x5 como registro base
-	mul x5, x6, x4              // y * ancho
-	add x5, x5, x3              // x + y*ancho
-	lsl x5, x5, #2              // *4 → offset en bytes
-	add x5, x20, x5              // framebuffer base + offset
-
-// Precalcular tamaño fila
-	mov x8, #640
-	lsl x8, x8, #2              // x8 = 640 * 4 = 2560
-
-// Dibujo del rectángulo
-loopMC62:                      	// filas
-    	mov x1, 58       	// columnas restantes
-    	mov x7, x5              // puntero a comienzo de fila
-loopMC61:
-    	stur w11, [x7]          // pintar píxel
-	add x7, x7, #4          // avanzar a próximo píxel
-	sub x1, x1, #1
-	cbnz x1, loopMC61          // volver si no terminó la fila
-
-	add x5, x5, x8          // avanzar a próxima fila
-	sub x2, x2, #1
-	cbnz x2, loopMC62
-	
-// //--------------------------------------- MC7 (286,308) 29x29
-
-
+	// MC7 (286,308) 29x29
+	mov x1, 29
+	mov x2, 29
+	mov x3, 286
+	mov x4, 308
 	movz x11, 0x37, lsl 16
 	movk x11, 0x495B, lsl 0
+	bl rectangulo
 
-	mov x2, 29            // contador de filas
 
-//usando la formula direcion=base + 4*(x + (y*640))  
-
-	mov x3, #286                // x
-	mov x4, #308                // y
-	mov x6, SCREEN_WIDTH        // ancho pantalla = 640
-// elijo x5 como registro base
-	mul x5, x6, x4              // y * ancho
-	add x5, x5, x3              // x + y*ancho
-	lsl x5, x5, #2              // *4 → offset en bytes
-	add x5, x20, x5              // framebuffer base + offset
-
-// Precalcular tamaño fila
-	mov x8, #640
-	lsl x8, x8, #2              // x8 = 640 * 4 = 2560
-
-// Dibujo del rectángulo
-loopMC72:                      	// filas
-    	mov x1, 29       	// columnas restantes
-    	mov x7, x5              // puntero a comienzo de fila
-loopMC71:
-    	stur w11, [x7]          // pintar píxel
-	add x7, x7, #4          // avanzar a próximo píxel
-	sub x1, x1, #1
-	cbnz x1, loopMC71          // volver si no terminó la fila
-
-	add x5, x5, x8          // avanzar a próxima fila
-	sub x2, x2, #1
-	cbnz x2, loopMC72
 	
 // ---------- OJOS	color 0x000000
 // //--------------------------------------- O0 (306,259) 18x19
@@ -1099,6 +917,141 @@ loopN01:
 	add x5, x5, x8          // avanzar a próxima fila
 	sub x2, x2, #1
 	cbnz x2, loopN02
-	
+
+ // --------- NIEVE (círculos)
+	mov w11, #COLOR_WHITE
+
+	// Copo 1
+	mov x3, #320         // Centro X 
+	mov x4, #240         // Centro Y 
+	mov x15, #2          // Radio del círculo
+	bl circulo
+
+	// Copo 2
+	mov x3, #400      
+	mov x4, #200       
+	mov x15, #4       
+	bl circulo
+
+	// Copo 3
+	mov x3, #350
+	mov x4, #350    
+	mov x15, #6     
+	bl circulo
+
+	// Copo 4
+	mov x3, #50
+	mov x4, #350    
+	mov x15, #6  
+	bl circulo
+
+	// Copo 5
+	mov x3, #30
+	mov x4, #100
+	mov x15, #2      
+	bl circulo
+
+	// Copo 6
+	mov x3, #600
+	mov x4, #100
+	mov x15, #3
+	bl circulo
+
+	// Copo 7
+	mov x3, #580
+	mov x4, #300
+	mov x15, #5
+	bl circulo
+
+	// Copo 8
+	mov x3, #100
+	mov x4, #400
+	mov x15, #4
+	bl circulo
+
+	// Copo 9
+	mov x3, #500
+	mov x4, #50
+	mov x15, #2
+	bl circulo
+
+	// Copo 10
+	mov x3, #150
+	mov x4, #200
+	mov x15, #3
+	bl circulo
+
+	// Copo 11
+	mov x3, #400
+	mov x4, #420
+	mov x15, #4
+	bl circulo
+
+	// Copo 12
+	mov x3, #250
+	mov x4, #150
+	mov x15, #5
+	bl circulo
+
+	// Copo 13
+	mov x3, #70
+	mov x4, #180
+	mov x15, #3
+	bl circulo
+
+	// Copo 14
+	mov x3, #200
+	mov x4, #80
+	mov x15, #2
+	bl circulo
+
+	// Copo 15
+	mov x3, #450
+	mov x4, #280
+	mov x15, #4
+	bl circulo
+
+	// Copo 16
+	mov x3, #550
+	mov x4, #180
+	mov x15, #3
+	bl circulo
+
+	// Copo 17
+	mov x3, #300
+	mov x4, #400
+	mov x15, #5
+	bl circulo
+
+	// Copo 18
+	mov x3, #120
+	mov x4, #300
+	mov x15, #2
+	bl circulo
+
+	// Copo 19
+	mov x3, #380
+	mov x4, #150
+	mov x15, #3
+	bl circulo
+
+	// Copo 20
+	mov x3, #480
+	mov x4, #380
+	mov x15, #4
+	bl circulo
+
+	// Copo 21
+	mov x3, #180
+	mov x4, #250
+	mov x15, #2
+	bl circulo
+
+	// Copo 22
+	mov x3, #420
+	mov x4, #320
+	mov x15, #3
+	bl circulo
+
 InfLoop:
 	b InfLoop
