@@ -64,6 +64,106 @@ loopF1:
 	movk x11, 0xDAD9, lsl 00
 	
 	bl rectangulo
+ 
+    //skyline
+
+	mov x1, 40
+	mov x2, 250
+	mov x3, 20
+	mov x4, 127
+    	movz x11, 0xDC, lsl 16
+	movk x11, 0xDCDC, lsl 0
+	bl rectangulo
+
+	mov x1, 50
+	mov x2, 100
+	mov x3, 120
+	mov x4, 277
+        movz x11, 0xDC, lsl 16
+	movk x11, 0xDCDC, lsl 0
+	bl rectangulo
+
+	mov x1, 40
+	mov x2, 100
+	mov x3, 20
+	mov x4, 277
+	movz x11, 0x64, lsl 16
+	movk x11, 0x6464, lsl 0
+	bl rectangulo
+
+	mov x1, 30   
+	mov x2, 150
+	mov x3, 0 
+	mov x4, 227
+	movz x11, 0x64, lsl 16
+	movk x11, 0x6464, lsl 0
+	bl rectangulo
+
+
+	mov x1, 45
+	mov x2, 200
+	mov x3, 50
+	mov x4, 177
+	movz x11, 0x64, lsl 16
+	movk x11, 0x6464, lsl 0
+	bl rectangulo
+
+	mov x3, #72
+	mov x4, #175
+	mov x15, #22
+	movz x11, 0x64, lsl 16
+	movk x11, 0x6464, lsl 0     
+	bl circulo
+
+	mov x1, 35
+	mov x2, 130
+	mov x3, 70
+	mov x4, 247
+	movz x11, 0x64, lsl 16
+	movk x11, 0x6464, lsl 0
+	bl rectangulo
+
+	mov x1, 40
+	mov x2, 70
+	mov x3, 100
+	mov x4, 307
+	movz x11, 0x64, lsl 16
+	movk x11, 0x6464, lsl 0
+	bl rectangulo
+   
+	mov x1, 30
+	mov x2, 60
+	mov x3, 150
+	mov x4, 317
+	movz x11, 0x64, lsl 16
+	movk x11, 0x6464, lsl 0
+	bl rectangulo
+
+	mov x1, 2
+	mov x2, 4
+	mov x3, 130
+	mov x4, 320
+    	movz x11, 0xFF00         
+    	movk x11, 0xFFFF, lsl 16 
+	bl rectangulo
+
+	mov x1, 2
+	mov x2, 4
+	mov x3, 30
+	mov x4, 330
+   	movz x11, 0xFF00         
+ 	movk x11, 0xFFFF, lsl 16 
+	bl rectangulo
+
+
+	mov x1, 2
+	mov x2, 4
+	mov x3, 90
+	mov x4, 270
+        movz x11, 0xFF00         
+        movk x11, 0xFFFF, lsl 16 
+	bl rectangulo
+
 	
 
 //--------CUERPO color: 0x6C421F -------//
