@@ -74,7 +74,7 @@ loopF1:
 	mov x3, 160		// x3 -> x
 	mov x4, 434		// x4 -> y
 	movz x11, 0x6C, lsl 16	// x11-> color
-	movk x11, 421F, lsl 00 
+	movk x11, 0x421F, lsl 00 
 	
 	bl rectangulo
 	
@@ -86,7 +86,7 @@ loopF1:
 	mov x3, 170		// x3 -> x
 	mov x4, 396		// x4 -> y
 	movz x11, 0x6C, lsl 16	// x11-> color
-	movk x11, 421F, lsl 00 
+	movk x11, 0x421F, lsl 00 
 	
 	bl rectangulo
 
@@ -99,7 +99,7 @@ loopF1:
 	mov x3, 179		// x3 -> x
 	mov x4, 366		// x4 -> y
 	movz x11, 0x6C, lsl 16	// x11-> color
-	movk x11, 421F, lsl 00 
+	movk x11, 0x421F, lsl 00 
 	
 	bl rectangulo
 	
@@ -111,7 +111,7 @@ loopF1:
 	mov x3, 189		// x3 -> x
 	mov x4, 347		// x4 -> y
 	movz x11, 0x6C, lsl 16	// x11-> color
-	movk x11, 421F, lsl 00 
+	movk x11, 0x421F, lsl 00 
 	
 	bl rectangulo
 
@@ -124,7 +124,7 @@ loopF1:
 	mov x3, 199		// x3 -> x
 	mov x4, 337		// x4 -> y
 	movz x11, 0x6C, lsl 16	// x11-> color
-	movk x11, 421F, lsl 00 
+	movk x11, 0x421F, lsl 00 
 	
 	bl rectangulo
 	
@@ -134,7 +134,7 @@ loopF1:
 	mov x3, 209		// x3 -> x
 	mov x4, 298		// x4 -> y
 	movz x11, 0x6C, lsl 16	// x11-> color
-	movk x11, 421F, lsl 00 
+	movk x11, 0x421F, lsl 00 
 	
 	bl rectangulo
 
