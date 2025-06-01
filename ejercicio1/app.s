@@ -26,29 +26,29 @@ loopF1:
 	cbnz x2,loopF2      // Si no es la última fila, salto
  
 // --------- OBELISCO
-    //Punta obelisco
-    mov x3, #490       // centro X
-    mov x4, #125       // centro Y
-    mov x15, #30        // ancho base
-    mov x16, #35        //altura
-    mov w11, #COLOR_WHITE
-    bl triangulo
+    	//Punta obelisco
+    	mov x3, #487       // centro X
+    	mov x4, #239       // centro Y
+    	mov x15, #15        // ancho base
+    	mov x16, #15      //altura
+    	mov w11, #COLOR_WHITE
+    	bl triangulo
 
 
     //cuerpo obelisco
- 	mov x1, 30
-	mov x2, 240
-	mov x3, 475
-	mov x4, 143
+ 	mov x1, 15
+	mov x2, 130
+	mov x3, 480
+	mov x4, 247
 	movz x11, 0xDC, lsl 16
 	movk x11, 0xDCDC, lsl 0
 	bl rectangulo
 
     //ventana oblisco
-    mov x1, 4
-	mov x2, 8
-	mov x3, 488
-	mov x4, 125
+    	mov x1, 2
+	mov x2, 2
+	mov x3, 487
+	mov x4, 244
 	movz x11, 0x64, lsl 16
 	movk x11, 0x6464, lsl 0
 	bl rectangulo
@@ -71,7 +71,7 @@ loopF1:
 	mov x2, 250
 	mov x3, 20
 	mov x4, 127
-    	movz x11, 0xDC, lsl 16
+   	movz x11, 0xDC, lsl 16
 	movk x11, 0xDCDC, lsl 0
 	bl rectangulo
 
@@ -79,8 +79,64 @@ loopF1:
 	mov x2, 100
 	mov x3, 120
 	mov x4, 277
-        movz x11, 0xDC, lsl 16
+    	movz x11, 0xDC, lsl 16
 	movk x11, 0xDCDC, lsl 0
+	bl rectangulo
+
+	mov x1, 40
+	mov x2, 160
+	mov x3, 170
+	mov x4, 217
+    	movz x11, 0xDC, lsl 16
+	movk x11, 0xDCDC, lsl 0
+	bl rectangulo
+
+	mov x1, 50
+	mov x2, 200
+	mov x3, 350
+	mov x4, 177
+    	movz x11, 0xDC, lsl 16
+	movk x11, 0xDCDC, lsl 0
+	bl rectangulo
+
+	mov x1, 46
+	mov x2, 200
+	mov x3, 352
+	mov x4, 174
+    	movz x11, 0xDC, lsl 16
+	movk x11, 0xDCDC, lsl 0
+	bl rectangulo
+
+	mov x1, 40
+	mov x2, 200
+	mov x3, 355
+	mov x4, 168
+    	movz x11, 0xDC, lsl 16
+	movk x11, 0xDCDC, lsl 0
+	bl rectangulo
+
+	mov x1, 30
+	mov x2, 200
+	mov x3, 360
+	mov x4, 163
+    	movz x11, 0xDC, lsl 16
+	movk x11, 0xDCDC, lsl 0
+	bl rectangulo
+
+	mov x1, 60
+	mov x2, 180
+	mov x3, 550
+	mov x4, 197
+    	movz x11, 0xDC, lsl 16
+	movk x11, 0xDCDC, lsl 0
+	bl rectangulo
+
+	mov x1, 50
+	mov x2, 160
+	mov x3, 540
+	mov x4, 217
+	movz x11, 0x64, lsl 16
+	movk x11, 0x6464, lsl 0
 	bl rectangulo
 
 	mov x1, 40
@@ -139,20 +195,78 @@ loopF1:
 	movk x11, 0x6464, lsl 0
 	bl rectangulo
 
+	mov x1, 40
+	mov x2, 230
+	mov x3, 160
+	mov x4, 147
+	movz x11, 0x64, lsl 16
+	movk x11, 0x6464, lsl 0
+	bl rectangulo
+
+	mov x1, 50
+	mov x2, 100
+	mov x3, 180
+	mov x4, 277
+	movz x11, 0x64, lsl 16
+	movk x11, 0x6464, lsl 0
+	bl rectangulo
+
+	mov x1, 50
+	mov x2, 100
+	mov x3, 320
+	mov x4, 277
+	movz x11, 0x64, lsl 16
+	movk x11, 0x6464, lsl 0
+	bl rectangulo
+
+	mov x1, 60
+	mov x2, 300
+	mov x3, 270
+	mov x4, 77
+	movz x11, 0x64, lsl 16
+	movk x11, 0x6464, lsl 0
+	bl rectangulo
+
+
+	mov x1, 50
+	mov x2, 100
+	mov x3, 400
+	mov x4, 277
+	movz x11, 0x64, lsl 16
+	movk x11, 0x6464, lsl 0
+	bl rectangulo
+
+	mov x1, 50
+	mov x2, 100
+	mov x3, 530
+	mov x4, 277
+	movz x11, 0x64, lsl 16
+	movk x11, 0x6464, lsl 0
+	bl rectangulo
+
+	mov x1, 40
+	mov x2, 250
+	mov x3, 600
+	mov x4, 127
+	movz x11, 0x64, lsl 16
+	movk x11, 0x6464, lsl 0
+	bl rectangulo
+
+
 	mov x1, 2
 	mov x2, 4
 	mov x3, 130
 	mov x4, 320
-    	movz x11, 0xFF00         
-    	movk x11, 0xFFFF, lsl 16 
+    movz x11, 0xFF00         
+    movk x11, 0xFFFF, lsl 16 
 	bl rectangulo
 
 	mov x1, 2
 	mov x2, 4
 	mov x3, 30
 	mov x4, 330
-   	movz x11, 0xFF00         
- 	movk x11, 0xFFFF, lsl 16 
+    movz x11, 0xFF00         
+    movk x11, 0xFFFF, lsl 16 
 	bl rectangulo
 
 
@@ -160,9 +274,52 @@ loopF1:
 	mov x2, 4
 	mov x3, 90
 	mov x4, 270
-        movz x11, 0xFF00         
-        movk x11, 0xFFFF, lsl 16 
+    movz x11, 0xFF00         
+    movk x11, 0xFFFF, lsl 16 
 	bl rectangulo
+
+    //cartel
+
+	mov x1, 3
+	mov x2, 100
+	mov x3, 46
+	mov x4, 360
+	movz x11, 0x64, lsl 16
+	movk x11, 0x6464, lsl 0 
+	bl rectangulo
+
+	mov x1, 3
+	mov x2, 100
+	mov x3, 112
+	mov x4, 360
+	movz x11, 0x64, lsl 16
+	movk x11, 0x6464, lsl 0 
+	bl rectangulo
+
+	mov x1, 100
+	mov x2, 50
+	mov x3, 30
+	mov x4, 350
+    movz x11, 0x8440         // Green=0x84 (132), Blue=0x40 (64)  
+    movk x11, 0xFF00, lsl 16 // Alpha=0xFF, Red=0x00
+	bl rectangulo
+
+	mov x1, 96
+	mov x2, 46
+	mov x3, 32
+	mov x4, 352
+    mov x11, #COLOR_WHITE      
+	bl rectangulo
+
+	mov x1, 94
+	mov x2, 44
+	mov x3, 33
+	mov x4, 353
+    movz x11, 0x8440         // Green=0x84 (132), Blue=0x40 (64)  
+    movk x11, 0xFF00, lsl 16 // Alpha=0xFF, Red=0x00    
+	bl rectangulo
+
+
 
 	
 
