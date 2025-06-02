@@ -1,7 +1,7 @@
 	.equ SCREEN_WIDTH, 		640
 	.equ SCREEN_HEIGH, 		480
-	.equ BITS_PER_PIXEL,  		32
-        .equ COLOR_WHITE,   	0xFFFFFFFF
+	.equ BITS_PER_PIXEL,   32
+  .equ COLOR_WHITE,   	0xFFFFFFFF
 	.include "formasBasicas.s"	
 
 	.globl main
@@ -396,48 +396,6 @@ loopF1:
     	movk x11, 0xFFFF, lsl 16 
 	bl rectangulo
 
-	
-    //cartel
-
-	mov x1, 3
-	mov x2, 100
-	mov x3, 46
-	mov x4, 360
-	movz x11, 0x64, lsl 16
-	movk x11, 0x6464, lsl 0 
-	bl rectangulo
-
-	mov x1, 3
-	mov x2, 100
-	mov x3, 112
-	mov x4, 360
-	movz x11, 0x64, lsl 16
-	movk x11, 0x6464, lsl 0 
-	bl rectangulo
-
-	mov x1, 100
-	mov x2, 50
-	mov x3, 30
-	mov x4, 350
-    movz x11, 0x8440         // Green=0x84 (132), Blue=0x40 (64)  
-    movk x11, 0xFF00, lsl 16 // Alpha=0xFF, Red=0x00
-	bl rectangulo
-
-	mov x1, 96
-	mov x2, 46
-	mov x3, 32
-	mov x4, 352
-    mov x11, #COLOR_WHITE      
-	bl rectangulo
-
-	mov x1, 94
-	mov x2, 44
-	mov x3, 33
-	mov x4, 353
-    movz x11, 0x8440         // Green=0x84 (132), Blue=0x40 (64)  
-    movk x11, 0xFF00, lsl 16 // Alpha=0xFF, Red=0x00    
-	bl rectangulo
-
 //-------nieve piso
 
     mov x3, #114       // centro X
@@ -482,6 +440,52 @@ loopF1:
     mov w11, #COLOR_WHITE
     bl triangulo
 
+	
+//cartel
+
+	mov x1, 3
+	mov x2, 100
+	mov x3, 46
+	mov x4, 360
+	movz x11, 0x64, lsl 16
+	movk x11, 0x6464, lsl 0 
+	bl rectangulo
+
+	mov x1, 3
+	mov x2, 100
+	mov x3, 112
+	mov x4, 360
+	movz x11, 0x64, lsl 16
+	movk x11, 0x6464, lsl 0 
+	bl rectangulo
+
+	mov x1, 100
+	mov x2, 50
+	mov x3, 30
+	mov x4, 350
+    movz x11, 0x8440         // Green=0x84 (132), Blue=0x40 (64)  
+    movk x11, 0xFF00, lsl 16 // Alpha=0xFF, Red=0x00
+	bl rectangulo
+
+	mov x1, 96
+	mov x2, 46
+	mov x3, 32
+	mov x4, 352
+    mov x11, #COLOR_WHITE      
+	bl rectangulo
+
+	mov x1, 94
+	mov x2, 44
+	mov x3, 33
+	mov x4, 353
+    movz x11, 0x8440         // Green=0x84 (132), Blue=0x40 (64)  
+    movk x11, 0xFF00, lsl 16 // Alpha=0xFF, Red=0x00    
+	bl rectangulo
+	
+	
+// LETRAS
+	bl letras
+	
 
 	
 

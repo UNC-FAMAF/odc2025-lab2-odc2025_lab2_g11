@@ -1,4 +1,3 @@
-.ifndef formasBasicas_s
 .equ SCREEN_WIDTH, 640
 
 calculardireccion:
@@ -233,4 +232,331 @@ fin_triangulo:
     ldp x29, x30, [sp], #16  // Restaurar FP y LR
     ret                      // Retornar
 
-.endif
+
+//................LETRAS.............//
+
+letras: 
+	 stp x29, x30, [sp, #-16]!  // Guardar x29 (fp) y x30 (lr)
+	 mov x29, sp                // Establecer nuevo frame pointer
+	 
+//.....O
+// O0 40,358 4x2
+	mov x1, 4		// x1 -> ancho del rectangulo
+	mov x2, 2		// x2 -> alto del rectangulo
+	mov x3, 40		// x3 -> x
+	mov x4, 358		// x4 -> y
+	movz x11, 0xFF, lsl 16	// x11-> color
+	movk x11, 0xFFFF, lsl 00 
+	
+	bl rectangulo
+// O1 38,360 2x8
+	mov x1, 2		// x1 -> ancho del rectangulo
+	mov x2, 8		// x2 -> alto del rectangulo
+	mov x3, 38		// x3 -> x
+	mov x4, 360		// x4 -> y
+	movz x11, 0xFF, lsl 16	// x11-> color
+	movk x11, 0xFFFF, lsl 00 
+	
+	bl rectangulo
+//O2 44,360 2x8
+	mov x1, 2		// x1 -> ancho del rectangulo
+	mov x2, 8		// x2 -> alto del rectangulo
+	mov x3, 44		// x3 -> x
+	mov x4, 360		// x4 -> y
+	movz x11, 0xFF, lsl 16	// x11-> color
+	movk x11, 0xFFFF, lsl 00 
+	
+	bl rectangulo
+//O3 40,368 4x2
+	mov x1, 4		// x1 -> ancho del rectangulo
+	mov x2, 2		// x2 -> alto del rectangulo
+	mov x3, 40		// x3 -> x
+	mov x4, 368		// x4 -> y
+	movz x11, 0xFF, lsl 16	// x11-> color
+	movk x11, 0xFFFF, lsl 00 
+	
+	bl rectangulo
+
+//.....D
+//D0 47,358 6x2
+	mov x1, 6		// x1 -> ancho del rectangulo
+	mov x2, 2		// x2 -> alto del rectangulo
+	mov x3, 47		// x3 -> x
+	mov x4, 358		// x4 -> y
+	movz x11, 0xFF, lsl 16	// x11-> color
+	movk x11, 0xFFFF, lsl 00 
+	
+	bl rectangulo
+//D1 47,358 2x12
+	mov x1, 2		// x1 -> ancho del rectangulo
+	mov x2, 12		// x2 -> alto del rectangulo
+	mov x3, 47		// x3 -> x
+	mov x4, 358		// x4 -> y
+	movz x11, 0xFF, lsl 16	// x11-> color
+	movk x11, 0xFFFF, lsl 00 
+	
+	bl rectangulo
+//D2 53,360 2x8
+	mov x1, 2		// x1 -> ancho del rectangulo
+	mov x2, 8		// x2 -> alto del rectangulo
+	mov x3, 53		// x3 -> x
+	mov x4, 360		// x4 -> y
+	movz x11, 0xFF, lsl 16	// x11-> color
+	movk x11, 0xFFFF, lsl 00 
+	
+	bl rectangulo
+//D3 47,368 6x2
+	mov x1, 6		// x1 -> ancho del rectangulo
+	mov x2, 2		// x2 -> alto del rectangulo
+	mov x3, 47		// x3 -> x
+	mov x4, 368		// x4 -> y
+	movz x11, 0xFF, lsl 16	// x11-> color
+	movk x11, 0xFFFF, lsl 00 
+	
+	bl rectangulo
+//.....C
+
+//C0 58,358 6x2
+	mov x1, 6		// x1 -> ancho del rectangulo
+	mov x2, 2		// x2 -> alto del rectangulo
+	mov x3, 58		// x3 -> x
+	mov x4, 358		// x4 -> y
+	movz x11, 0xFF, lsl 16	// x11-> color
+	movk x11, 0xFFFF, lsl 00 
+	
+	bl rectangulo
+//C1 56,360 2x8
+	mov x1, 2		// x1 -> ancho del rectangulo
+	mov x2, 8		// x2 -> alto del rectangulo
+	mov x3, 56		// x3 -> x
+	mov x4, 360		// x4 -> y
+	movz x11, 0xFF, lsl 16	// x11-> color
+	movk x11, 0xFFFF, lsl 00 
+	
+	bl rectangulo
+//C2 58,368 6x2
+	mov x1, 6		// x1 -> ancho del rectangulo
+	mov x2, 2		// x2 -> alto del rectangulo
+	mov x3, 58		// x3 -> x
+	mov x4, 368		// x4 -> y
+	movz x11, 0xFF, lsl 16	// x11-> color
+	movk x11, 0xFFFF, lsl 00 
+	
+	bl rectangulo
+//.....2
+//Dos0  87,358 8x2
+	mov x1, 8		// x1 -> ancho del rectangulo
+	mov x2, 2		// x2 -> alto del rectangulo
+	mov x3, 87		// x3 -> x
+	mov x4, 358		// x4 -> y
+	movz x11, 0xFF, lsl 16	// x11-> color
+	movk x11, 0xFFFF, lsl 00 
+	
+	bl rectangulo
+//Dos01 93,358 2x4
+	mov x1, 2		// x1 -> ancho del rectangulo
+	mov x2, 4		// x2 -> alto del rectangulo
+	mov x3, 93		// x3 -> x
+	mov x4, 358		// x4 -> y
+	movz x11, 0xFF, lsl 16	// x11-> color
+	movk x11, 0xFFFF, lsl 00 
+	
+	bl rectangulo
+//Dos02 91,362 2x2
+	mov x1, 2		// x1 -> ancho del rectangulo
+	mov x2, 2		// x2 -> alto del rectangulo
+	mov x3, 91		// x3 -> x
+	mov x4, 362		// x4 -> y
+	movz x11, 0xFF, lsl 16	// x11-> color
+	movk x11, 0xFFFF, lsl 00 
+	
+	bl rectangulo
+//Dos03 89,364 2x2
+	mov x1, 2		// x1 -> ancho del rectangulo
+	mov x2, 2		// x2 -> alto del rectangulo
+	mov x3, 89		// x3 -> x
+	mov x4, 364		// x4 -> y
+	movz x11, 0xFF, lsl 16	// x11-> color
+	movk x11, 0xFFFF, lsl 00 
+	
+	bl rectangulo
+//Dos04 87,366 2x4
+	mov x1, 2		// x1 -> ancho del rectangulo
+	mov x2, 4		// x2 -> alto del rectangulo
+	mov x3, 87		// x3 -> x
+	mov x4, 366		// x4 -> y
+	movz x11, 0xFF, lsl 16	// x11-> color
+	movk x11, 0xFFFF, lsl 00 
+	
+	bl rectangulo
+//Dos05 87,368 8x2
+	mov x1, 8		// x1 -> ancho del rectangulo
+	mov x2, 2		// x2 -> alto del rectangulo
+	mov x3, 87		// x3 -> x
+	mov x4, 368		// x4 -> y
+	movz x11, 0xFF, lsl 16	// x11-> color
+	movk x11, 0xFFFF, lsl 00 
+	
+	bl rectangulo
+//.....5
+//Cinco0 99,358 6x2
+	mov x1, 6		// x1 -> ancho del rectangulo
+	mov x2, 2		// x2 -> alto del rectangulo
+	mov x3, 99		// x3 -> x
+	mov x4, 358		// x4 -> y
+	movz x11, 0xFF, lsl 16	// x11-> color
+	movk x11, 0xFFFF, lsl 00 
+	
+	bl rectangulo
+//Cinco1 96,360  2x4
+	mov x1, 2		// x1 -> ancho del rectangulo
+	mov x2, 4		// x2 -> alto del rectangulo
+	mov x3, 96		// x3 -> x
+	mov x4, 360		// x4 -> y
+	movz x11, 0xFF, lsl 16	// x11-> color
+	movk x11, 0xFFFF, lsl 00 
+	
+	bl rectangulo
+//Cinco2 96,362  6x2
+	mov x1, 6		// x1 -> ancho del rectangulo
+	mov x2, 2		// x2 -> alto del rectangulo
+	mov x3, 96		// x3 -> x
+	mov x4, 362		// x4 -> y
+	movz x11, 0xFF, lsl 16	// x11-> color
+	movk x11, 0xFFFF, lsl 00 
+	
+	bl rectangulo
+//Cinco3 102,364 2x4
+	mov x1, 2		// x1 -> ancho del rectangulo
+	mov x2, 4		// x2 -> alto del rectangulo
+	mov x3, 102		// x3 -> x
+	mov x4, 364		// x4 -> y
+	movz x11, 0xFF, lsl 16	// x11-> color
+	movk x11, 0xFFFF, lsl 00 
+	
+	bl rectangulo
+//Cinco4 96,366  2x2
+	mov x1, 2		// x1 -> ancho del rectangulo
+	mov x2, 2		// x2 -> alto del rectangulo
+	mov x3, 96		// x3 -> x
+	mov x4, 366		// x4 -> y
+	movz x11, 0xFF, lsl 16	// x11-> color
+	movk x11, 0xFFFF, lsl 00 
+	
+	bl rectangulo
+//Cinco5 99,368 4x2
+	mov x1, 4		// x1 -> ancho del rectangulo
+	mov x2, 2		// x2 -> alto del rectangulo
+	mov x3, 99		// x3 -> x
+	mov x4, 368		// x4 -> y
+	movz x11, 0xFF, lsl 16	// x11-> color
+	movk x11, 0xFFFF, lsl 00 
+	
+	bl rectangulo
+//.....K
+//K0 105,358 2x12
+	mov x1, 2		// x1 -> ancho del rectangulo
+	mov x2, 12		// x2 -> alto del rectangulo
+	mov x3, 105		// x3 -> x
+	mov x4, 358		// x4 -> y
+	movz x11, 0xFF, lsl 16	// x11-> color
+	movk x11, 0xFFFF, lsl 00 
+	
+	bl rectangulo
+//K1 111,358 2x2
+	mov x1, 2		// x1 -> ancho del rectangulo
+	mov x2, 2		// x2 -> alto del rectangulo
+	mov x3, 111		// x3 -> x
+	mov x4, 358		// x4 -> y
+	movz x11, 0xFF, lsl 16	// x11-> color
+	movk x11, 0xFFFF, lsl 00 
+	
+	bl rectangulo
+//K2 109,360 2x2
+	mov x1, 2		// x1 -> ancho del rectangulo
+	mov x2, 2		// x2 -> alto del rectangulo
+	mov x3, 109		// x3 -> x
+	mov x4, 360		// x4 -> y
+	movz x11, 0xFF, lsl 16	// x11-> color
+	movk x11, 0xFFFF, lsl 00 
+	
+	bl rectangulo
+//K3 105 362 4x2
+	mov x1, 4		// x1 -> ancho del rectangulo
+	mov x2, 2		// x2 -> alto del rectangulo
+	mov x3, 105		// x3 -> x
+	mov x4, 362		// x4 -> y
+	movz x11, 0xFF, lsl 16	// x11-> color
+	movk x11, 0xFFFF, lsl 00 
+	
+	bl rectangulo
+//K4 109 364 4x2
+	mov x1, 4		// x1 -> ancho del rectangulo
+	mov x2, 2		// x2 -> alto del rectangulo
+	mov x3, 109		// x3 -> x
+	mov x4, 364		// x4 -> y
+	movz x11, 0xFF, lsl 16	// x11-> color
+	movk x11, 0xFFFF, lsl 00 
+	
+	bl rectangulo
+//K5 111 364 2x6
+	mov x1, 2		// x1 -> ancho del rectangulo
+	mov x2, 6		// x2 -> alto del rectangulo
+	mov x3, 111		// x3 -> x
+	mov x4, 364		// x4 -> y
+	movz x11, 0xFF, lsl 16	// x11-> color
+	movk x11, 0xFFFF, lsl 00 
+	
+	bl rectangulo
+
+//.....M
+//M0 114 358 2x12
+	mov x1, 2		// x1 -> ancho del rectangulo
+	mov x2, 12		// x2 -> alto del rectangulo
+	mov x3, 114		// x3 -> x
+	mov x4, 358		// x4 -> y
+	movz x11, 0xFF, lsl 16	// x11-> color
+	movk x11, 0xFFFF, lsl 00 
+	
+	bl rectangulo
+//M1 122 358 2x12
+	mov x1, 2		// x1 -> ancho del rectangulo
+	mov x2, 12		// x2 -> alto del rectangulo
+	mov x3, 122		// x3 -> x
+	mov x4, 358		// x4 -> y
+	movz x11, 0xFF, lsl 16	// x11-> color
+	movk x11, 0xFFFF, lsl 00 
+	
+	bl rectangulo
+//M2 114 360 4x2
+	mov x1, 4		// x1 -> ancho del rectangulo
+	mov x2, 2		// x2 -> alto del rectangulo
+	mov x3, 114		// x3 -> x
+	mov x4, 360		// x4 -> y
+	movz x11, 0xFF, lsl 16	// x11-> color
+	movk x11, 0xFFFF, lsl 00 
+	
+	bl rectangulo
+//M3 120 360 4x2
+	mov x1, 4		// x1 -> ancho del rectangulo
+	mov x2, 2		// x2 -> alto del rectangulo
+	mov x3, 120		// x3 -> x
+	mov x4, 360		// x4 -> y
+	movz x11, 0xFF, lsl 16	// x11-> color
+	movk x11, 0xFFFF, lsl 00 
+	
+	bl rectangulo
+//M4 118 362 2x2
+	mov x1, 2		// x1 -> ancho del rectangulo
+	mov x2, 2		// x2 -> alto del rectangulo
+	mov x3, 118		// x3 -> x
+	mov x4, 362		// x4 -> y
+	movz x11, 0xFF, lsl 16	// x11-> color
+	movk x11, 0xFFFF, lsl 00 
+	
+	bl rectangulo
+	
+//END LETRAS
+	ldp x29, x30, [sp], #16    // Restaurar x29 y x30
+	br lr
+
