@@ -66,12 +66,12 @@ loopF1:
 	bl rectangulo
  
     //skyline
-
+    
 	mov x1, 40
 	mov x2, 250
 	mov x3, 20
 	mov x4, 127
-   	movz x11, 0xDC, lsl 16
+    	movz x11, 0xDC, lsl 16
 	movk x11, 0xDCDC, lsl 0
 	bl rectangulo
 
@@ -139,6 +139,27 @@ loopF1:
 	movk x11, 0x6464, lsl 0
 	bl rectangulo
 
+	mov x1, 50
+	mov x2, 5
+	mov x3, 540
+	mov x4, 217
+	mov x11, #COLOR_WHITE
+	bl rectangulo
+
+	mov x1, 30
+	mov x2, 2
+	mov x3, 540
+	mov x4, 230
+	mov x11, #COLOR_WHITE
+	bl rectangulo
+
+    	mov x1, 10
+	mov x2, 1
+	mov x3, 540
+	mov x4, 250
+	mov x11, #COLOR_WHITE
+	bl rectangulo
+
 	mov x1, 40
 	mov x2, 100
 	mov x3, 20
@@ -146,6 +167,14 @@ loopF1:
 	movz x11, 0x64, lsl 16
 	movk x11, 0x6464, lsl 0
 	bl rectangulo
+
+	mov x1, 40
+	mov x2, 10
+	mov x3, 20
+	mov x4, 277
+	mov x11, #COLOR_WHITE
+	bl rectangulo
+
 
 	mov x1, 30   
 	mov x2, 150
@@ -165,11 +194,18 @@ loopF1:
 	bl rectangulo
 
 	mov x3, #72
+	mov x4, #173
+	mov x15, #22
+	mov x11, #COLOR_WHITE   
+	bl circulo
+
+	mov x3, #72
 	mov x4, #175
 	mov x15, #22
 	movz x11, 0x64, lsl 16
 	movk x11, 0x6464, lsl 0     
 	bl circulo
+
 
 	mov x1, 35
 	mov x2, 130
@@ -179,12 +215,26 @@ loopF1:
 	movk x11, 0x6464, lsl 0
 	bl rectangulo
 
+	mov x1, 35
+	mov x2, 2
+	mov x3, 70
+	mov x4, 247
+	mov x11, #COLOR_WHITE
+	bl rectangulo
+
 	mov x1, 40
 	mov x2, 70
 	mov x3, 100
 	mov x4, 307
 	movz x11, 0x64, lsl 16
 	movk x11, 0x6464, lsl 0
+	bl rectangulo
+
+	mov x1, 40
+	mov x2, 1
+	mov x3, 100
+	mov x4, 307
+	mov x11, #COLOR_WHITE
 	bl rectangulo
    
 	mov x1, 30
@@ -195,12 +245,42 @@ loopF1:
 	movk x11, 0x6464, lsl 0
 	bl rectangulo
 
+	mov x1, 30
+	mov x2, 2
+	mov x3, 150
+	mov x4, 317
+	mov x11, #COLOR_WHITE
+	bl rectangulo
+
 	mov x1, 40
 	mov x2, 230
 	mov x3, 160
 	mov x4, 147
 	movz x11, 0x64, lsl 16
 	movk x11, 0x6464, lsl 0
+	bl rectangulo
+
+
+
+	mov x1, 40
+	mov x2, 3
+	mov x3, 160
+	mov x4, 147
+	mov x11, #COLOR_WHITE
+	bl rectangulo
+
+	mov x1, 15
+	mov x2, 1
+	mov x3, 163
+	mov x4, 170
+	mov x11, #COLOR_WHITE
+	bl rectangulo
+
+    	mov x1, 15
+	mov x2, 1
+	mov x3, 165
+	mov x4, 190
+	mov x11, #COLOR_WHITE
 	bl rectangulo
 
 	mov x1, 50
@@ -212,6 +292,13 @@ loopF1:
 	bl rectangulo
 
 	mov x1, 50
+	mov x2, 2
+	mov x3, 180
+	mov x4, 277
+	mov x11, #COLOR_WHITE
+	bl rectangulo
+
+	mov x1, 50
 	mov x2, 100
 	mov x3, 320
 	mov x4, 277
@@ -219,12 +306,43 @@ loopF1:
 	movk x11, 0x6464, lsl 0
 	bl rectangulo
 
+	mov x1, 50
+	mov x2, 2
+	mov x3, 320
+	mov x4, 277
+	mov x11, #COLOR_WHITE
+	bl rectangulo
+
+
+
 	mov x1, 60
 	mov x2, 300
 	mov x3, 270
 	mov x4, 77
 	movz x11, 0x64, lsl 16
 	movk x11, 0x6464, lsl 0
+	bl rectangulo
+
+
+	mov x1, 60
+	mov x2, 2
+	mov x3, 270
+	mov x4, 77
+	mov x11, #COLOR_WHITE
+	bl rectangulo
+
+	mov x1, 30
+	mov x2, 1
+	mov x3, 270
+	mov x4, 100
+	mov x11, #COLOR_WHITE
+	bl rectangulo
+
+	mov x1, 20
+	mov x2, 1
+	mov x3, 300
+	mov x4, 85
+	mov x11, #COLOR_WHITE
 	bl rectangulo
 
 
@@ -257,16 +375,16 @@ loopF1:
 	mov x2, 4
 	mov x3, 130
 	mov x4, 320
-    movz x11, 0xFF00         
-    movk x11, 0xFFFF, lsl 16 
+    	movz x11, 0xFF00         
+    	movk x11, 0xFFFF, lsl 16 
 	bl rectangulo
 
 	mov x1, 2
 	mov x2, 4
 	mov x3, 30
 	mov x4, 330
-    movz x11, 0xFF00         
-    movk x11, 0xFFFF, lsl 16 
+    	movz x11, 0xFF00         
+    	movk x11, 0xFFFF, lsl 16 
 	bl rectangulo
 
 
@@ -274,10 +392,11 @@ loopF1:
 	mov x2, 4
 	mov x3, 90
 	mov x4, 270
-    movz x11, 0xFF00         
-    movk x11, 0xFFFF, lsl 16 
+        movz x11, 0xFF00         
+    	movk x11, 0xFFFF, lsl 16 
 	bl rectangulo
 
+	
     //cartel
 
 	mov x1, 3
@@ -319,6 +438,49 @@ loopF1:
     movk x11, 0xFF00, lsl 16 // Alpha=0xFF, Red=0x00    
 	bl rectangulo
 
+//-------nieve piso
+
+    mov x3, #114       // centro X
+    mov x4, #455       // centro Y
+    mov x15, #50        // ancho base
+    mov x16, #10      //altura
+    mov w11, #COLOR_WHITE
+    bl triangulo
+
+    mov x3, #46       // centro X
+    mov x4, #455       // centro Y
+    mov x15, #50        // ancho base
+    mov x16, #10      //altura
+    mov w11, #COLOR_WHITE
+    bl triangulo
+
+    mov x3, #350       // centro X
+    mov x4, #400       // centro Y
+    mov x15, #300        // ancho base
+    mov x16, #20      //altura
+    mov w11, #COLOR_WHITE
+    bl triangulo
+
+    mov x3, #100       // centro X
+    mov x4, #370       // centro Y
+    mov x15, #300        // ancho base
+    mov x16, #20      //altura
+    mov w11, #COLOR_WHITE
+    bl triangulo
+
+    mov x3, #560       // centro X
+    mov x4, #373       // centro Y
+    mov x15, #130        // ancho base
+    mov x16, #10      //altura
+    mov w11, #COLOR_WHITE
+    bl triangulo
+
+    mov x3, #490       // centro X
+    mov x4, #450       // centro Y
+    mov x15, #300        // ancho base
+    mov x16, #20      //altura
+    mov w11, #COLOR_WHITE
+    bl triangulo
 
 
 	
