@@ -689,7 +689,7 @@ loopF1:
 	mov x4, 230		// x4 -> y
 	
 	movz x11, 0xFF, lsl 16 // x11-> color
-	movk x11, 0x9c5E
+	movk x11, 0x9c5E, lsl 0 
 	bl rectangulo
 	
 
@@ -701,7 +701,7 @@ loopF1:
 	mov x4, 239		// x4 -> y
 	
 	movz x11, 0xFF, lsl 16 // x11-> color
-	movk x11, 0x9c5E
+	movk x11, 0x9c5E, lsl 0 
 	bl rectangulo
 
 // ------- BORDE CAPUCHA color 0xDDB97B
@@ -713,7 +713,7 @@ loopF1:
 	mov x4, 239		// x4 -> y
 	
 	movz x11, 0xDD, lsl 16 // x11-> color
-	movk x11, 0xB97B
+	movk x11, 0xB97B, lsl 0 
 	bl rectangulo
 	
 // //--------------------------------------- BC1 (296,230) 77x9
@@ -724,7 +724,7 @@ loopF1:
 	mov x4, 230		// x4 -> y
 	
 	movz x11, 0xDD, lsl 16 // x11-> color
-	movk x11, 0xB97B
+	movk x11, 0xB97B, lsl 0 
 	bl rectangulo	
 	
 // ------- MASCARA OSCURA color 0x282531
@@ -737,7 +737,7 @@ loopF1:
 	mov x4, 308		// x4 -> y
 	
 	movz x11, 0x28, lsl 16 // x11-> color
-	movk x11, 0x2531
+	movk x11, 0x2531, lsl 0 
 	bl rectangulo	
 	
 // //--------------------------------------- MO1 (286,308) 107x29
@@ -749,7 +749,7 @@ loopF1:
 	mov x4, 308		// x4 -> y
 	
 	movz x11, 0x28, lsl 16 // x11-> color
-	movk x11, 0x2531
+	movk x11, 0x2531, lsl 0 
 	bl rectangulo	
 	
 // //--------------------------------------- MO2 (294,298) 77x58
@@ -761,7 +761,7 @@ loopF1:
 	mov x4, 298		// x4 -> y
 	
 	movz x11, 0x28, lsl 16 // x11-> color
-	movk x11, 0x2531
+	movk x11, 0x2531, lsl 0 
 	bl rectangulo	
 	
 // //--------------------------------------- MO3 (345,363) 9x8
@@ -773,7 +773,7 @@ loopF1:
 	mov x4, 363		// x4 -> y
 	
 	movz x11, 0x28, lsl 16 // x11-> color
-	movk x11, 0x2531
+	movk x11, 0x2531, lsl 0 
 	bl rectangulo
 	
 // //--------------------------------------- MO4 (335,354) 29x9
@@ -785,7 +785,7 @@ loopF1:
 	mov x4, 354		// x4 -> y
 	
 	movz x11, 0x28, lsl 16 // x11-> color
-	movk x11, 0x2531
+	movk x11, 0x2531, lsl 0 
 	bl rectangulo
 	
 
@@ -875,7 +875,7 @@ loopF1:
 	mov x4, 259		// x4 -> y
 	
 	movz x11, 0x00, lsl 16 // x11-> color
-	movk x11, 0x0000
+	movk x11, 0x0000, lsl 0 
 	bl rectangulo
 	
 // //--------------------------------------- O1 (355,259) 10x19
@@ -886,7 +886,7 @@ loopF1:
 	mov x4, 259		// x4 -> y
 	
 	movz x11, 0x00, lsl 16 // x11-> color
-	movk x11, 0x0000
+	movk x11, 0x0000, lsl 0 
 	bl rectangulo
 	
 // --------- NIEVE color 0xFFFFFF
