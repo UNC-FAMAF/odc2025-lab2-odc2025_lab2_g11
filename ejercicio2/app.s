@@ -50,8 +50,7 @@ loopF1:
 //------ETERNAUTA
 		bl eternauta
 		
-//-----NIEVE color 0xFFFFFF
-		bl nievecopos
+
 
 //------------------------------------------------------------------
 // ANIMACIÓN: Meteorito + impacto
@@ -114,11 +113,10 @@ saltea_dx:
 		bl circulo
 
 //--------------------------------------------------------------
-// 4) Delay más largo (≈ 2.000.000 ciclos) contador gigante para que sea mas lerdo cada frame para que se vea un movimiento mas lento
+// 4) Delay
 //--------------------------------------------------------------
-		movz x5, 0xB1E0, lsl 0     // parte baja: 0xB1E0 = 45536
-		movk x5, 0x002D, lsl 16    // parte alta: 0x2D0000 = 2949120
-		                       // total: ≈ 2994656 ciclos
+		movz x5, 0xDFFF, lsl 0     
+    		movk x5, 0x004D, lsl 16    
 delay_loop:
 		subs x5, x5, #1
 		bne delay_loop
@@ -174,11 +172,10 @@ loop_explosion:
 		bl nievepiso_cartel
 		bl letras
 		bl eternauta
-		bl nievecopos
+	
 		
-		  movz x5, 0xB1E0, lsl 0     // parte baja: 0xB1E0 = 45536
-		movk x5, 0x002D, lsl 16    // parte alta: 0x2D0000 = 2949120
-		                       // total: ≈ 2994656 ciclos
+		movz x5, 0xDFFF, lsl 0     
+                movk x5, 0x012D, lsl 16      
 delay_loop2:
 		subs x5, x5, #1
 		bne delay_loop2
