@@ -9,7 +9,7 @@ Descripción ejercicio 1:
 Pixelart basado en el eternauta, especificamente de la adaptación de Stagnaro lanzada por netflix en 2025. Elementos del dibujo: fondo de una ciudad (Bs As) con el obelisco, un cartel indicando odc 25, nieve y personaje principal.
 
 Descripción ejercicio 2:
-Animación de pixelart de ejercicio 1: Se agregan los meteoritos surcando el cielo y un último que impacta contra el obelisco.
+Animación de pixelart de ejercicio 1: Se agregan los meteoritos surcando el cielo y un último que impacta contra el obelisco. Elegimos que solo tape el obelisco por cuestión estética, pero también podía tapar el skyline. 
 
 Justificación instrucciones ARMv8:
 La única función diferente que se usó fue stp y ldp para ir guardando y cargando de a dos registros en algunas subrutinas que usaran muchos registros. Para el manejo del framepointer con el stack se usó directamente la versión LEGv8 con stur y ldur
