@@ -50,7 +50,72 @@ loopF1:
 //------ETERNAUTA
 		bl eternauta
 //150 , 420, 350, 180
+//------------------------------------------------------------------
+//ANIMACION: Parpadeo
 
+		mov x17, #2 // inicializador parpadeo
+parpadeo:
+		
+//delay
+		movz x5, 0xDFFF, lsl 0     
+		movk x5, 0x1F2D, lsl 16    
+		                       
+delay_ojos00:
+		subs x5, x5, #1
+		bne delay_ojos00
+		
+// 1) Borrar ojos
+   
+//ojo 1
+		mov x1, 18 		// x1 -> ancho del rectangulo
+		mov x2, 17		// x2 -> alto del rectangulo
+		mov x3, 306		// x3 -> x
+		mov x4, 259		// x4 -> y
+		
+		movz x11, 0xFF, lsl 16 // x11-> color cara
+		movk x11, 0x9c5E
+		bl rectangulo
+		
+//ojo 2
+		mov x1, 10 		// x1 -> ancho del rectangulo
+		mov x2, 17 		// x2 -> alto del rectangulo
+		mov x3, 355		// x3 -> x
+		mov x4, 259		// x4 -> y
+		
+		movz x11, 0xFF, lsl 16 // x11-> color cara
+		movk x11, 0x9c5E
+		bl rectangulo
+		
+//delay
+		movz x5, 0xDFFF, lsl 0     
+		movk x5, 0x1C2D, lsl 16    
+		                       
+delay_ojos:
+		subs x5, x5, #1
+		bne delay_ojos
+		
+//dibujar ojos
+		mov x1, 18 		// x1 -> ancho del rectangulo
+		mov x2, 19 		// x2 -> alto del rectangulo
+		mov x3, 306		// x3 -> x
+		mov x4, 259		// x4 -> y
+		
+		movz x11, 0x00, lsl 16 // x11-> color
+		movk x11, 0x0000
+		bl rectangulo
+		
+
+		mov x1, 10 		// x1 -> ancho del rectangulo
+		mov x2, 19 		// x2 -> alto del rectangulo
+		mov x3, 355		// x3 -> x
+		mov x4, 259		// x4 -> y
+		
+		movz x11, 0x00, lsl 16 // x11-> color
+		movk x11, 0x0000
+		bl rectangulo
+		
+		sub x17, x17, #1
+		cbnz x17, parpadeo
 
 //METIORITO150//------------------------------------------------------------------
 // ANIMACIÓN: Meteorito + impacto
