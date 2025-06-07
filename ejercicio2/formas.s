@@ -1674,3 +1674,181 @@ nievecopos:
 			ldur x30, [sp, #8]    // Cargar x30
 			add sp, sp, #16       // Liberar stack
 			br x30                // Retornar
+			
+			
+			
+
+// FORMAS ANIMACIONES
+
+
+//------------------------------------------------------------------
+//ANIMACION: parpadeoCall
+
+parpadeoCall:
+			sub sp, sp, #16       // Reservar espacio
+			stur x29, [sp, #0]    // Guardar x29 en [sp]
+			stur x30, [sp, #8]    // Guardar x30 en [sp + 8]
+			mov x29, sp           // Establecer nuevo FP
+
+
+
+			mov x17, #2 // inicializador parpadeo
+parpadeo:
+			
+//delay
+			movz x5, 0xDFFF, lsl 0     
+			movk x5, 0x0F2D, lsl 16    
+					               
+delay_ojos00:
+			subs x5, x5, #1
+			bne delay_ojos00
+			
+// 1) Borrar ojos
+
+//ojo 1
+			mov x1, 18 		// x1 -> ancho del rectangulo
+			mov x2, 17		// x2 -> alto del rectangulo
+			mov x3, 306		// x3 -> x
+			mov x4, 259		// x4 -> y
+			
+			movz x11, 0xFF, lsl 16 // x11-> color cara
+			movk x11, 0x9c5E
+			bl rectangulo
+			
+//ojo 2
+			mov x1, 10 		// x1 -> ancho del rectangulo
+			mov x2, 17 		// x2 -> alto del rectangulo
+			mov x3, 355		// x3 -> x
+			mov x4, 259		// x4 -> y
+			
+			movz x11, 0xFF, lsl 16 // x11-> color cara
+			movk x11, 0x9c5E
+			bl rectangulo
+			
+//delay
+			movz x5, 0xDFFF, lsl 0     
+			movk x5, 0x0E2D, lsl 16    
+					               
+delay_ojos:
+			subs x5, x5, #1
+			bne delay_ojos
+			
+//dibujar ojos
+			mov x1, 18 		// x1 -> ancho del rectangulo
+			mov x2, 19 		// x2 -> alto del rectangulo
+			mov x3, 306		// x3 -> x
+			mov x4, 259		// x4 -> y
+			
+			movz x11, 0x00, lsl 16 // x11-> color
+			movk x11, 0x0000
+			bl rectangulo
+			
+
+			mov x1, 10 		// x1 -> ancho del rectangulo
+			mov x2, 19 		// x2 -> alto del rectangulo
+			mov x3, 355		// x3 -> x
+			mov x4, 259		// x4 -> y
+			
+			movz x11, 0x00, lsl 16 // x11-> color
+			movk x11, 0x0000
+			bl rectangulo
+			
+			sub x17, x17, #1
+			cbnz x17, parpadeo
+			
+//END PARPADEO CALL
+			ldur x29, [sp, #0]    // Cargar x29
+			ldur x30, [sp, #8]    // Cargar x30
+			add sp, sp, #16       // Liberar stack
+			br x30                // Retornar
+				
+
+// ANIMACIÓN: Meteorito 
+//------------------------------------------------------------------
+meteoritoCall:
+			sub sp, sp, #16       // Reservar espacio
+	        stur x29, [sp, #0]    // Guardar x29 en [sp]
+	        stur x30, [sp, #8]    // Guardar x30 en [sp + 8]
+	        mov x29, sp           // Establecer nuevo FP
+
+loop_meteorito00:
+
+
+//--------------------------------------------------------------
+// 1) Borrar meteorito anterior con fondo
+//--------------------------------------------------------------
+		mov x15, #8 //radio
+		mov x3, x21 //x
+		mov x4, x22  //y
+		movz x11, 0x53, lsl 16
+		movk x11, 0xA6D6, lsl 0
+		bl circulo
+
+//--------------------------------------------------------------
+// 2) Actualizar posición
+//--------------------------------------------------------------
+		add x22, x22, x24   // y++
+		add x25, x25, #1
+		cmp x25, #2        //si x25 < 2 → salta y no mueve x, si x25 = 2 → NO salta
+		blt saltea_dx00
+		add x21, x21, x23   // x-- cada 2 frames
+		mov x25, #0         //resetea el contador de frames
+saltea_dx00:
+
+		cmp x22, #239     // compara pero no guarda resultado solo flag
+		bgt meteorito01  //si x22 > 239 que es donde esta la punta del obelisco entonces salta a explosion en obelisco y no sigue con dibujar meteoro
+
+//--------------------------------------------------------------
+// 3) Dibujar meteorito nuevo (rojo + naranja)
+//--------------------------------------------------------------
+// borde rojo
+		mov x15, #8
+		mov x3, x21
+		mov x4, x22
+		movz x11, 0xFFFF, lsl 16
+		movk x11, 0x0000, lsl 0
+		bl circulo
+
+// centro naranja
+		mov x15, #5
+		mov x3, x21
+		mov x4, x22
+		movz x11, 0xFFFF, lsl 16
+		movk x11, 0x8000, lsl 0
+		bl circulo
+
+	// redibujo
+		bl skyline
+		bl nievepiso
+		bl cartel
+		bl nievepiso_cartel
+		bl letras
+		bl eternauta
+
+//--------------------------------------------------------------
+// 4) Delay
+//--------------------------------------------------------------
+		movz x5, 0xDFFF, lsl 0     
+    		movk x5, 0x004D, lsl 16    
+delay_loop00:
+		subs x5, x5, #1
+		bne delay_loop00
+
+		b loop_meteorito00
+
+
+meteorito01:
+
+// redibujo
+		bl skyline
+		bl nievepiso
+		bl cartel
+		bl nievepiso_cartel
+		bl letras
+		bl eternauta
+
+//END METEORITO
+        ldur x29, [sp, #0]    // Cargar x29
+		ldur x30, [sp, #8]    // Cargar x30
+		add sp, sp, #16       // Liberar stack
+		br x30                // Retornar
